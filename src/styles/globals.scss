@@ -1,0 +1,32 @@
+@use "./tokens" as *;
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $fs-body;
+  line-height: $lh-normal;
+  color: $c-text;
+  background: $c-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 { letter-spacing: $ls-tight; margin: 0 0 $sp-16; }
+h1 { font-size: $fs-h1; line-height: $lh-tight; font-weight: $fw-bold; }
+h2 { font-size: $fs-h2; line-height: $lh-tight; font-weight: $fw-semibold; }
+h3 { font-size: $fs-h3; line-height: $lh-tight; font-weight: $fw-semibold; }
+p  { margin: 0 0 $sp-16; }
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid $c-accent-warning; outline-offset: 2px; }
+
+.container { width: min(1200px, 100%); margin-inline: auto; padding-inline: $sp-16; }
+
+.mono-surface { background: $c-surface; }
+.muted { color: $c-muted; }
