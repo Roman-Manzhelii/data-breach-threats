@@ -27,7 +27,6 @@
 }
 
 .links {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -37,15 +36,70 @@
   font-family: $font-sans;
   font-weight: $fw-medium;
   font-size: 14px;
-  letter-spacing: 0.08em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   line-height: 1;
   color: $c-text;
   text-decoration: none;
-  opacity: 0.9;
+  opacity: .9;
 }
 
 .link:hover,
 .link[aria-current="true"] {
   opacity: 1;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileMenu :global(.fixed-wrapper) {
+    z-index: $z-overlay;
+  }
+
+  .mobileMenu :global(.staggered-menu-wrapper) {
+    height: 72px;
+  }
+
+  .mobileMenu :global(.staggered-menu-header) {
+    position: static;
+    width: auto;
+    height: 72px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .mobileMenu :global(.sm-logo) {
+    display: none;
+  }
+
+  .mobileMenu :global(.sm-toggle) {
+    color: $c-text;
+    font-family: $font-sans;
+    font-weight: $fw-medium;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .mobileMenu :global(.staggered-menu-panel) {
+    background: $c-bg;
+  }
+
+  .mobileMenu :global(.sm-panel-item) {
+    color: $c-text;
+  }
 }
