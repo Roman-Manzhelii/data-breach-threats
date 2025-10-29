@@ -59,25 +59,20 @@
   }
 
   .mobileMenu {
-    display: flex;
-    align-items: center;
+    display: block
   }
 
   .mobileMenu :global(.fixed-wrapper) {
     z-index: $z-overlay;
   }
 
-  .mobileMenu :global(.staggered-menu-wrapper) {
-    height: 72px;
-  }
-
   .mobileMenu :global(.staggered-menu-header) {
-    position: static;
+    position: absolute;
+    inset: 0 $sp-16 auto auto;
     width: auto;
     height: 72px;
     padding: 0;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
   }
 
@@ -88,9 +83,8 @@
   .mobileMenu :global(.sm-toggle) {
     color: $c-text;
     font-family: $font-sans;
-    font-weight: $fw-medium;
-    font-size: 14px;
-    letter-spacing: .08em;
+    font-weight: $fw-semibold;
+    font-size: 1em;
     text-transform: uppercase;
     line-height: 1;
   }
