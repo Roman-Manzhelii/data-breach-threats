@@ -1,34 +1,59 @@
 @use '../../styles/tokens' as *;
 
 .intro {
-    padding: $sp-32 0 0
+    padding: $sp-32 0 0;
+}
+
+.heroGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "q l"
+        "d l";
+    align-items: start;
+    gap: $sp-16 $sp-24;
 }
 
 .question {
-    font-size: $fs-h2;
-    line-height: $lh-tight;
-    letter-spacing: $ls-tight;
-    font-weight: $fw-bold;
-    text-align: center;
+    grid-area: q;
     margin: 0 0 $sp-16;
+    font-family: $font-sans;
+    font-weight: $fw-bold;
+    font-size: clamp(24px, 2.8vw, 40px);
+    letter-spacing: $ls-tight;
+    line-height: $lh-tight;
+    text-align:justify;
 }
 
 .definition {
-    max-width: 72ch;
+    grid-area: d;
     margin: 0 auto;
-    text-align: center;
+    text-align:justify;
+    max-width: 80ch;
+    font-family: $font-sans;
+    font-weight: $fw-regular;
+    font-size: clamp(14px, 2vw, 22px);
+    line-height: $lh-normal;
+    opacity: .9;
+}
+
+.lottie {
+    grid-area: l;
+    width: clamp(90px, 30vw, 320px);
+    height: auto;
+    justify-self: start;
 }
 
 .stageWrap {
     height: 320vh;
-    position: relative
+    position: relative;
 }
 
 .stagePin {
     position: sticky;
     top: 72px;
     height: calc(100vh - 72px);
-    isolation: isolate
+    isolation: isolate;
 }
 
 .center {
@@ -59,6 +84,7 @@
     font-size: clamp(14px, 2vw, 22px);
     line-height: $lh-normal;
     opacity: .9;
+    text-align:justify;
 }
 
 .warn {
@@ -71,21 +97,21 @@
 
 .show {
     opacity: 1;
-    transform: translateY(0) scale(1)
+    transform: translateY(0) scale(1);
 }
 
 .tl {
-    top: 6%;
+    top: 2%;
     left: 6%
 }
 
 .tr {
     top: 22%;
-    right: 8%
+    right: 2%
 }
 
 .bl {
-    bottom: 28%;
+    bottom: 22%;
     left: 12%
 }
 
@@ -94,14 +120,37 @@
     right: 12%
 }
 
-@media (max-width:1024px) {
+@media (max-width: 768px) {
+
+    .heroGrid {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "q l"
+            "d d";
+        column-gap: $sp-12;
+        row-gap: $sp-12;
+        align-items: start;
+    }
+
+    .lottie {
+        height: auto;
+        justify-self: end;
+        align-self: start;
+    }
+
+    .question {
+        text-align: center;
+        align-self: center;
+    }
+}
+
+@media (max-width: 1024px) {
     .stageWrap {
         height: 260vh
     }
 }
 
 @media (max-width:480px) {
-
     .tl {
         top: 8%;
         left: 4%

@@ -4,7 +4,7 @@ export const intro = {
     'A data breach is any security incident in which unauthorized parties access sensitive or confidential information, including personal data (Social Security numbers, bank account numbers, healthcare data) and corporate data (customer records, intellectual property, financial information). The terms “data breach” and “breach” are often used interchangeably with “cyberattack.” However, not all cyberattacks are data breaches. Data breaches include only those security breaches where someone gains unauthorized access to data.',
   impactTitle: 'How do Data Breaches happen?',
   impactContent:
-    "The assumption is that a data breach is caused by an outside hacker, but that's not always true. Reasons for how data breaches happen might sometimes be traced back to intentional attacks. However, it can just as easily result from a simple oversight by individuals or flaws in a company’s infrastructure. Here’s how a data breach can occur:",
+    "The assumption is that a data breach is caused by an outside hacker, but that's not always true. Reasons for how data breaches happen might sometimes be traced back to intentional attacks. However, it can just as easily result from a simple oversight by individuals or flaws in a company\'s infrastructure.",
   cards: [
     {
       title: 'An Accidental Insider. ',

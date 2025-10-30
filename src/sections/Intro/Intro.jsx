@@ -4,6 +4,8 @@ import { intro } from '../../content/intro'
 import DecryptedText from '../../components/DecryptedText/DecryptedText'
 import WarningCard from '../../components/WarningCard/WarningCard'
 import useReducedMotion from '../../hooks/useReducedMotion'
+import Lottie from 'lottie-react'
+import whatToDo from '../../assets/what-to-do.json'
 
 export default function Intro() {
   const wrapRef = useRef(null)
@@ -37,8 +39,16 @@ export default function Intro() {
   return (
     <section className={styles.intro}>
       <div className="container">
-        <h1 className={styles.question}>{intro.question}</h1>
-        <p className={styles.definition}>{intro.definition}</p>
+        <div className={styles.heroGrid}>
+          <h1 className={styles.question}>{intro.question}</h1>
+          <Lottie
+            className={styles.lottie}
+            animationData={whatToDo}
+            autoplay={!reduced}
+            loop={!reduced}
+          />
+          <p className={styles.definition}>{intro.definition}</p>
+        </div>
       </div>
 
       <div ref={wrapRef} className={styles.stageWrap}>
