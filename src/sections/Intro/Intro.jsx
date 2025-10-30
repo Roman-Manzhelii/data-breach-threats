@@ -54,19 +54,20 @@ export default function Intro() {
               className={styles.centerText}
               encryptedClassName={styles.centerText}
             />
+            <p className={styles.centerSub}>{intro.impactContent}</p>
           </div>
 
           <div className={`${styles.warn} ${styles.tl} ${step1 ? styles.show : ''}`}>
-            <WarningCard text={intro.cards[0]} />
+            <WarningCard title={intro.cards[0].title} text={intro.cards[0].text} />
           </div>
           <div className={`${styles.warn} ${styles.tr} ${step2 ? styles.show : ''}`}>
-            <WarningCard text={intro.cards[1]} />
+            <WarningCard title={intro.cards[1].title} text={intro.cards[1].text} />
           </div>
           <div className={`${styles.warn} ${styles.bl} ${step3 ? styles.show : ''}`}>
-            <WarningCard text={intro.cards[2]} />
+            <WarningCard title={intro.cards[2].title} text={intro.cards[2].text} />
           </div>
           <div className={`${styles.warn} ${styles.br} ${step4 ? styles.show : ''}`}>
-            <WarningCard text={intro.cards[3]} />
+            <WarningCard title={intro.cards[3].title} text={intro.cards[3].text} />
           </div>
         </div>
       </div>

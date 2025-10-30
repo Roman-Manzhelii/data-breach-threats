@@ -34,8 +34,11 @@
 .center {
     position: absolute;
     inset: 0;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $sp-20;
     text-align: center;
     padding: 0 $sp-16;
 }
@@ -43,9 +46,19 @@
 .centerText {
     font-family: $font-sans;
     font-weight: $fw-bold;
-    font-size: clamp(22px, 2.6vw, 36px);
+    font-size: clamp(24px, 2.8vw, 40px);
     letter-spacing: $ls-tight;
-    line-height: $lh-tight
+    line-height: $lh-tight;
+}
+
+.centerSub {
+    max-width: 80ch;
+    margin: 0;
+    font-family: $font-sans;
+    font-weight: $fw-regular;
+    font-size: clamp(14px, 2vw, 22px);
+    line-height: $lh-normal;
+    opacity: .9;
 }
 
 .warn {
@@ -67,7 +80,7 @@
 }
 
 .tr {
-    top: 18%;
+    top: 22%;
     right: 8%
 }
 
@@ -77,50 +90,35 @@
 }
 
 .br {
-    bottom: 6%;
-    right: 10%
+    bottom: 8%;
+    right: 12%
 }
 
-@media (max-width: 1024px) {
+@media (max-width:1024px) {
     .stageWrap {
         height: 260vh
     }
 }
 
-@media (max-width: 768px) {
-    .intro {
-        padding: $sp-24 0 0
-    }
-
-    .stageWrap {
-        height: 220vh
-    }
-
-    .stagePin {
-        top: 64px;
-        height: calc(100vh - 64px)
-    }
-
-    .warn {
-        left: $sp-16;
-        right: $sp-16
-    }
+@media (max-width:480px) {
 
     .tl {
-        top: 6%
+        top: 8%;
+        left: 4%
     }
 
     .tr {
-        top: 24%
+        top: 22%;
+        right: 5%
     }
 
     .bl {
-        top: 62%;
-        bottom: auto
+        bottom: 22%;
+        left: 4%
     }
 
     .br {
-        top: 84%;
-        bottom: auto
+        bottom: 8%;
+        right: 3%
     }
 }
