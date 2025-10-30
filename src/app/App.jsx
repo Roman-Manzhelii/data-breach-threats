@@ -2,17 +2,16 @@ import { useState } from 'react'
 import { routes } from './routes.jsx'
 import TopNav from '../components/TopNav/TopNav.jsx'
 import Anchor from '../components/Anchor/Anchor.jsx'
+import Intro from '../sections/Intro/Intro.jsx'
 
 export default function App() {
-  const [showQuiz,setShowQuiz]=useState(false)
+  const [showQuiz, setShowQuiz] = useState(false)
   return (
     <>
       <TopNav items={routes} />
       <main>
         <Anchor id="intro" />
-        <section className="section container">
-          <h1>Data breaches: definition and threat</h1>
-        </section>
+        <Intro />
 
         <Anchor id="cases" />
         <section className="section container">
@@ -31,7 +30,7 @@ export default function App() {
 
         <Anchor id="quiz" />
         <section className="section container">
-          <h2>Quiz</h2>
+          <h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2>
         </section>
       </main>
     </>

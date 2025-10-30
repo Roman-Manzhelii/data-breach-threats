@@ -1,0 +1,19 @@
+@use '../../styles/tokens' as *;
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $sp-8;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.chip {
+    padding: $sp-8 $sp-12;
+    background: $c-surface;
+    border: 1px solid $c-muted;
+    border-radius: 999px;
+    font-size: 14px;
+    line-height: 1
+}

@@ -1,0 +1,16 @@
+@use '../../styles/tokens' as *;
+
+.card {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-12;
+    padding: $sp-12 $sp-16;
+    background: $c-surface;
+    border: 1px solid $c-muted;
+    border-radius: 999px
+}
+
+.icon {
+    width: 16px;
+    height: 16px
+}

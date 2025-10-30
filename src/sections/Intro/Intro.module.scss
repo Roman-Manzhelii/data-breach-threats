@@ -1,0 +1,109 @@
+@use '../../styles/tokens' as *;
+
+.intro {
+    padding: $sp-32 0 $sp-40
+}
+
+.question {
+    font-size: $fs-h2;
+    line-height: $lh-tight;
+    letter-spacing: $ls-tight;
+    font-weight: $fw-bold;
+    margin: 0 0 $sp-16;
+    text-align: center;
+}
+
+.definition {
+    max-width: 72ch;
+    margin: 0 auto;
+    font-size: $fs-body;
+    text-align: center;
+}
+
+.stage {
+    position: relative;
+    height: 64vh;
+    min-height: 420px;
+    margin-top: $sp-40;
+}
+
+.centerLine {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 0 $sp-16;
+}
+
+.centerChar {
+    font-weight: $fw-bold;
+    letter-spacing: $ls-tight;
+    font-size: clamp(22px, 2.6vw, 36px)
+}
+
+.warn {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(10px) scale(.98);
+    transition: transform $dur-300 $ease-out, opacity $dur-200 $ease-out;
+}
+
+.warn:global(.is-visible) {
+    opacity: 1;
+    transform: translateY(0) scale(1)
+}
+
+.tl {
+    top: 8%;
+    left: 12%
+}
+
+.tr {
+    top: 8%;
+    right: 12%
+}
+
+.bl {
+    bottom: 12%;
+    left: 18%
+}
+
+.br {
+    bottom: 10%;
+    right: 18%
+}
+
+@media (max-width: 768px) {
+    .intro {
+        padding: $sp-24 0 $sp-32
+    }
+
+    .stage {
+        height: auto;
+        min-height: 0;
+        margin-top: $sp-24
+    }
+
+    .centerLine {
+        position: static;
+        margin-bottom: $sp-16
+    }
+
+    .warn {
+        position: static;
+        transform: translateY(6px)
+    }
+
+    .tl,
+    .tr,
+    .bl,
+    .br {
+        inset: auto
+    }
+
+    .stage {
+        display: grid;
+        gap: $sp-12
+    }
+}
