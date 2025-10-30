@@ -1,11 +1,39 @@
+import { useEffect, useRef, useState } from 'react'
 import styles from './Intro.module.scss'
 import { intro } from '../../content/intro'
 import DecryptedText from '../../components/DecryptedText/DecryptedText'
 import WarningCard from '../../components/WarningCard/WarningCard'
-import useScrollReveal from '../../hooks/useScrollReveal'
+import useReducedMotion from '../../hooks/useReducedMotion'
 
 export default function Intro() {
-  const reveal = useScrollReveal()
+  const wrapRef = useRef(null)
+  const [p, setP] = useState(0)
+  const reduced = useReducedMotion()
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      const total = el.offsetHeight - vh
+      const prog = total <= 0 ? 0 : Math.min(1, Math.max(0, (-rect.top) / total))
+      setP(prog)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  const step1 = reduced || p > 0.12
+  const step2 = reduced || p > 0.32
+  const step3 = reduced || p > 0.54
+  const step4 = reduced || p > 0.74
+
   return (
     <section className={styles.intro}>
       <div className="container">
@@ -13,29 +41,33 @@ export default function Intro() {
         <p className={styles.definition}>{intro.definition}</p>
       </div>
 
-      <div className={styles.stage}>
-        <div className={styles.centerLine}>
-          <DecryptedText
-            text={intro.impactTitle}
-            speed={40}
-            sequential
-            useOriginalCharsOnly
-            animateOn="hover"
-            revealDirection="start"
-          />
-        </div>
+      <div ref={wrapRef} className={styles.stageWrap}>
+        <div className={styles.stagePin}>
+          <div className={styles.center}>
+            <DecryptedText
+              text={intro.impactTitle}
+              speed={40}
+              sequential
+              useOriginalCharsOnly
+              animateOn="hover"
+              revealDirection="start"
+              className={styles.centerText}
+              encryptedClassName={styles.centerText}
+            />
+          </div>
 
-        <div ref={reveal} className={`${styles.warn} ${styles.tl}`}>
-          <WarningCard text={intro.cards[0]} />
-        </div>
-        <div ref={reveal} className={`${styles.warn} ${styles.tr}`}>
-          <WarningCard text={intro.cards[1]} />
-        </div>
-        <div ref={reveal} className={`${styles.warn} ${styles.bl}`}>
-          <WarningCard text={intro.cards[2]} />
-        </div>
-        <div ref={reveal} className={`${styles.warn} ${styles.br}`}>
-          <WarningCard text={intro.cards[3]} />
+          <div className={`${styles.warn} ${styles.tl} ${step1 ? styles.show : ''}`}>
+            <WarningCard text={intro.cards[0]} />
+          </div>
+          <div className={`${styles.warn} ${styles.tr} ${step2 ? styles.show : ''}`}>
+            <WarningCard text={intro.cards[1]} />
+          </div>
+          <div className={`${styles.warn} ${styles.bl} ${step3 ? styles.show : ''}`}>
+            <WarningCard text={intro.cards[2]} />
+          </div>
+          <div className={`${styles.warn} ${styles.br} ${step4 ? styles.show : ''}`}>
+            <WarningCard text={intro.cards[3]} />
+          </div>
         </div>
       </div>
     </section>

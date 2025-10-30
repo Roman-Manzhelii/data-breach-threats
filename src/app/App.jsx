@@ -30,7 +30,7 @@ export default function App() {
 
         <Anchor id="quiz" />
         <section className="section container">
-          <h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2><h2>Quiz</h2>
+          <h2>Quiz</h2>
         </section>
       </main>
     </>

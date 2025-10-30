@@ -1,7 +1,7 @@
 @use '../../styles/tokens' as *;
 
 .intro {
-    padding: $sp-32 0 $sp-40
+    padding: $sp-32 0 0
 }
 
 .question {
@@ -9,25 +9,29 @@
     line-height: $lh-tight;
     letter-spacing: $ls-tight;
     font-weight: $fw-bold;
-    margin: 0 0 $sp-16;
     text-align: center;
+    margin: 0 0 $sp-16;
 }
 
 .definition {
     max-width: 72ch;
     margin: 0 auto;
-    font-size: $fs-body;
     text-align: center;
 }
 
-.stage {
-    position: relative;
-    height: 64vh;
-    min-height: 420px;
-    margin-top: $sp-40;
+.stageWrap {
+    height: 320vh;
+    position: relative
 }
 
-.centerLine {
+.stagePin {
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    isolation: isolate
+}
+
+.center {
     position: absolute;
     inset: 0;
     display: grid;
@@ -36,10 +40,12 @@
     padding: 0 $sp-16;
 }
 
-.centerChar {
+.centerText {
+    font-family: $font-sans;
     font-weight: $fw-bold;
+    font-size: clamp(22px, 2.6vw, 36px);
     letter-spacing: $ls-tight;
-    font-size: clamp(22px, 2.6vw, 36px)
+    line-height: $lh-tight
 }
 
 .warn {
@@ -47,63 +53,74 @@
     opacity: 0;
     transform: translateY(10px) scale(.98);
     transition: transform $dur-300 $ease-out, opacity $dur-200 $ease-out;
+    pointer-events: none;
 }
 
-.warn:global(.is-visible) {
+.show {
     opacity: 1;
     transform: translateY(0) scale(1)
 }
 
 .tl {
-    top: 8%;
-    left: 12%
+    top: 6%;
+    left: 6%
 }
 
 .tr {
-    top: 8%;
-    right: 12%
+    top: 18%;
+    right: 8%
 }
 
 .bl {
-    bottom: 12%;
-    left: 18%
+    bottom: 28%;
+    left: 12%
 }
 
 .br {
-    bottom: 10%;
-    right: 18%
+    bottom: 6%;
+    right: 10%
+}
+
+@media (max-width: 1024px) {
+    .stageWrap {
+        height: 260vh
+    }
 }
 
 @media (max-width: 768px) {
     .intro {
-        padding: $sp-24 0 $sp-32
+        padding: $sp-24 0 0
     }
 
-    .stage {
-        height: auto;
-        min-height: 0;
-        margin-top: $sp-24
+    .stageWrap {
+        height: 220vh
     }
 
-    .centerLine {
-        position: static;
-        margin-bottom: $sp-16
+    .stagePin {
+        top: 64px;
+        height: calc(100vh - 64px)
     }
 
     .warn {
-        position: static;
-        transform: translateY(6px)
+        left: $sp-16;
+        right: $sp-16
     }
 
-    .tl,
-    .tr,
-    .bl,
+    .tl {
+        top: 6%
+    }
+
+    .tr {
+        top: 24%
+    }
+
+    .bl {
+        top: 62%;
+        bottom: auto
+    }
+
     .br {
-        inset: auto
-    }
-
-    .stage {
-        display: grid;
-        gap: $sp-12
+        top: 84%;
+        bottom: auto
     }
 }
