@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     gap: $sp-16;
-    margin-bottom: $sp-20;
+    margin-bottom: $sp-24
 }
 
 .title {
@@ -24,7 +24,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: $sp-20;
+    gap: $sp-24;
     align-items: stretch;
 }
 
@@ -37,6 +37,6 @@
 @media (max-width: 640px) {
     .grid {
         grid-template-columns: 1fr;
-        gap: $sp-16
+        gap: $sp-20
     }
 }
