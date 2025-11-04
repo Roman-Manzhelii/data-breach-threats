@@ -1,9 +1,0 @@
-export const caseTitle = 'The 23andMe Data Breach';
-
-export const caseParagraphs = [
-  'In October 2023, genetic testing company 23andMe disclosed a major data breach. Hackers did not directly compromise the company\'s servers. Instead, they exploited credential stuffing, using leaked passwords from other websites to log in to 23andMe accounts.',
-  'The breach impacted approximately 6.9 million users, nearly half of the company\'s customer base. Stolen information included names, profile details, and genetic and ancestry data. Some of this data came specifically from the “DNA Relatives” feature, which allows customers to share parts of their genetic profile to find relatives. Attackers later published samples online and offered the full dataset for sale on dark web forums, sometimes charging only a few dollars per profile.',
-  'Sensitive emphasis was placed on profiles of Jewish and Chinese ancestry, raising concerns that genetic data could be misused for discrimination or targeted harassment. Investigations also revealed that attackers accessed information from approximately 13.9 million related profiles, extending the breach beyond the directly compromised accounts.',
-  'In 2024, multiple class-action lawsuits were filed. To resolve them, 23andMe agreed to pay $30 million in compensation. In response, the company enforced mandatory password resets and required all users to enable two-factor authentication. However, controversy grew when 23andMe attempted to shift part of the blame onto customers, arguing they had reused weak passwords, a move widely criticized by the media.',
-  'This case highlights the ethical and legal challenges of handling highly sensitive genetic data. The incident demonstrates how inadequate security practices combined with incomplete regulation can put millions at risk.'
-];
