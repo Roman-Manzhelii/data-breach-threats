@@ -91,7 +91,7 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                 </div>
 
                 <div ref={backRef} data-face="back" className={`${styles.face} ${styles.back}`}>
-                    <h4 className={styles.backTitle}>{item.title}</h4>
+                    <h3 className={styles.title}>{item.title}</h3>
                     <p className={styles.story}>{item.story}</p>
                 </div>
             </div>

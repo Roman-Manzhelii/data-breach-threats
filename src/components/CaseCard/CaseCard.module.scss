@@ -25,6 +25,9 @@
     transform: rotateY(var(--rot));
     transition: transform $dur-300 $ease-out;
     height: var(--cardH, var(--h, 460px));
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .face {
@@ -102,7 +105,6 @@
     color: rgba($c-text, .55)
 }
 
-/* значення без «капсул» */
 .pill {
     position: relative;
     display: block;
@@ -202,15 +204,7 @@
 .eventNote {
     font-size: 15px;
     line-height: 1.45;
-    color: $c-text
-}
-
-.backTitle {
-    margin: 0;
-    font-weight: $fw-semibold;
-    font-size: clamp(22px, 2.2vw, 30px);
-    letter-spacing: $ls-tight;
-    line-height: $lh-tight
+    color: $c-text;
 }
 
 .story {
