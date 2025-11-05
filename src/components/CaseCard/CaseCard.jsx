@@ -49,21 +49,16 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                         <span className={styles.year}>{item.year}</span>
                     </header>
 
-                    <div className={styles.section}>
-                        <div className={styles.label}>Attack vector</div>
+                    <div className={styles.kvRow}>
+                        <div className={`${styles.kvLabel} ${styles.label}`}>Attack vector</div>
+                        <div className={`${styles.kvLabel} ${styles.label} ${styles.kvLabelR}`}>Fine</div>
                         <div className={styles.pillAccent}>{item.vector}</div>
+                        {fine && <div className={styles.fineSoft}>{fine}</div>}
                     </div>
-
-                    {fine && (
-                        <div className={styles.section}>
-                            <div className={styles.label}>Enforcement</div>
-                            <div className={styles.value}>{fine}</div>
-                        </div>
-                    )}
 
                     {!!item.dataTypes?.length && (
                         <div className={styles.section}>
-                            <div className={styles.label}>Data types</div>
+                            <div className={styles.label}>Data types exposed</div>
                             <div className={styles.tags}>
                                 {item.dataTypes.slice(0, 2).map((t, i) => (
                                     <span key={i} className={styles.tag}>{t}</span>
@@ -91,7 +86,6 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                 </div>
 
                 <div ref={backRef} data-face="back" className={`${styles.face} ${styles.back}`}>
-                    <h3 className={styles.title}>{item.title}</h3>
                     <p className={styles.story}>{item.story}</p>
                 </div>
             </div>

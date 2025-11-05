@@ -28,9 +28,6 @@
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     will-change: transform;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    will-change: transform;
 }
 
 .face {
@@ -84,7 +81,7 @@
     display: inline-flex;
     align-items: center;
     padding: 8px 12px;
-    background: rgba($c-text, .04);
+    background: rgba($c-text, .06);
     border-radius: 999px;
     font-weight: $fw-medium;
     font-size: 12px;
@@ -103,7 +100,27 @@
     color: rgba($c-text, .55);
 }
 
+.kvRow {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: $sp-16;
+    row-gap: $sp-8;
+    align-items: center;
+}
+
+.kvLabel {
+    grid-row: 1
+}
+
+.kvLabelR {
+    grid-column: 2;
+    justify-self: end
+}
+
 .pillAccent {
+    grid-column: 1;
+    grid-row: 2;
     position: relative;
     display: block;
     padding-left: $sp-16;
@@ -123,10 +140,15 @@
     background: $c-accent-warning;
 }
 
-.value {
+.fineSoft {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    border-radius: 10px;
+    color: rgba($c-text, .7);
     font-weight: $fw-medium;
-    font-size: clamp(15px, 1.8vw, 17px);
-    line-height: 1.45;
+    font-size: clamp(18px, 2.2vw, 24px);
+    letter-spacing: -0.01em;
 }
 
 .tags {
@@ -217,5 +239,20 @@
 
     .title {
         font-size: clamp(24px, 6vw, 32px)
+    }
+
+    .kvRow {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto
+    }
+
+    .kvLabelR {
+        grid-column: 1;
+        justify-self: start
+    }
+
+    .fineSoft {
+        grid-column: 1;
+        justify-self: start
     }
 }
