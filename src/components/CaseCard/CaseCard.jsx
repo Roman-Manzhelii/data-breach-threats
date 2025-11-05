@@ -51,13 +51,13 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
 
                     <div className={styles.section}>
                         <div className={styles.label}>Attack vector</div>
-                        <div className={styles.pill}>{item.vector}</div>
+                        <div className={styles.pillAccent}>{item.vector}</div>
                     </div>
 
                     {fine && (
                         <div className={styles.section}>
                             <div className={styles.label}>Enforcement</div>
-                            <div className={styles.pill}>{fine}</div>
+                            <div className={styles.value}>{fine}</div>
                         </div>
                     )}
 
@@ -91,7 +91,7 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                 </div>
 
                 <div ref={backRef} data-face="back" className={`${styles.face} ${styles.back}`}>
-                    <h4 className={styles.backTitle}>{item.title}</h4>
+                    <h3 className={styles.title}>{item.title}</h3>
                     <p className={styles.story}>{item.story}</p>
                 </div>
             </div>
