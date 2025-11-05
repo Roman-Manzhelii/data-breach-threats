@@ -50,10 +50,16 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                     </header>
 
                     <div className={styles.kvRow}>
-                        <div className={`${styles.kvLabel} ${styles.label}`}>Attack vector</div>
-                        <div className={`${styles.kvLabel} ${styles.label} ${styles.kvLabelR}`}>Fine</div>
-                        <div className={styles.pillAccent}>{item.vector}</div>
-                        {fine && <div className={styles.fineSoft}>{fine}</div>}
+                        <div className={styles.kvLeft}>
+                            <div className={styles.label}>Attack vector</div>
+                            <div className={styles.pillAccent}>{item.vector}</div>
+                        </div>
+                        {fine && (
+                            <div className={styles.kvRight}>
+                                <div className={styles.label}>Fine</div>
+                                <div className={styles.fineSoft}>{fine}</div>
+                            </div>
+                        )}
                     </div>
 
                     {!!item.dataTypes?.length && (

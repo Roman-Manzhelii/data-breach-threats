@@ -103,24 +103,23 @@
 .kvRow {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    column-gap: $sp-16;
-    row-gap: $sp-8;
     align-items: center;
+    gap: $sp-16;
 }
 
-.kvLabel {
-    grid-row: 1
+.kvLeft {
+    display: grid;
+    gap: $sp-8
 }
 
-.kvLabelR {
-    grid-column: 2;
-    justify-self: end
+.kvRight {
+    align-self: center;
+    display: grid;
+    gap: 6px;
+    justify-items: end;
 }
 
 .pillAccent {
-    grid-column: 1;
-    grid-row: 2;
     position: relative;
     display: block;
     padding-left: $sp-16;
@@ -141,9 +140,6 @@
 }
 
 .fineSoft {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
     border-radius: 10px;
     color: rgba($c-text, .7);
     font-weight: $fw-medium;
@@ -167,39 +163,39 @@
 }
 
 .timeline {
+    --rail-x: 14px;
     position: relative;
     list-style: none;
     margin: 0;
-    padding: 0 0 0 $sp-28;
+    padding: 0 0 0 calc(var(--rail-x) + $sp-16);
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 8px;
+    left: var(--rail-x);
     top: 0;
     bottom: 0;
-    width: 1px;
+    width: 2px;
     background: $c-muted;
+    border-radius: 1px;
 }
 
 .event {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: $sp-8;
-    margin-bottom: $sp-12;
+    display: block;
+    margin: $sp-16 0;
 }
 
 .dot {
     position: absolute;
-    left: -$sp-28;
-    top: 2px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: $c-surface;
-    border: 1px solid $c-muted;
+    left: calc(-#{$sp-16} + 1px);
+    top: 1.15em;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: $c-muted;
+    transform: translate(-50%, -50%);
 }
 
 .eventBody {
@@ -242,17 +238,10 @@
     }
 
     .kvRow {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto
+        grid-template-columns: 1fr
     }
 
-    .kvLabelR {
-        grid-column: 1;
-        justify-self: start
-    }
-
-    .fineSoft {
-        grid-column: 1;
-        justify-self: start
+    .kvRight {
+        justify-items: start
     }
 }
