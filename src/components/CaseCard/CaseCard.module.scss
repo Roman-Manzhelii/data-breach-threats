@@ -41,7 +41,7 @@
     -webkit-backface-visibility: hidden;
     display: grid;
     align-content: start;
-    gap: $sp-24;
+    gap: $sp-40;
     visibility: hidden;
 }
 
@@ -124,7 +124,6 @@
 .pillAccent {
     position: relative;
     display: block;
-    padding: $sp-16 $sp-10;
     font-family: $font-sans;
     font-weight: $fw-medium;
     opacity: .9;
@@ -134,16 +133,6 @@
 
 }
 
-.pillAccent::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: .35em;
-    bottom: .35em;
-    width: 3px;
-    border-radius: 2px;
-    background: $c-accent-warning;
-}
 
 .fineSoft {
     color: $c-text;
