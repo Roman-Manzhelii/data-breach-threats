@@ -31,7 +31,7 @@ export default function Cases() {
   }, [])
 
   return (
-    <section id="cases" className={`section container ${styles.wrap}`}>
+    <section id="cases" className={styles.wrap}>
       <div className={styles.header}>
         <h2 className={styles.title}>Case Studies</h2>
       </div>

@@ -1,7 +1,11 @@
 @use '../../styles/tokens' as *;
 
 .wrap {
-    margin-top: $sp-20
+    max-width: 1760px;
+    margin: 0 auto;
+    padding-left: clamp($sp-16, 5vw, $sp-56);
+    padding-right: clamp($sp-16, 5vw, $sp-56);
+    padding-top: $sp-24;
 }
 
 .header {
@@ -9,7 +13,7 @@
     align-items: center;
     justify-content: space-between;
     gap: $sp-16;
-    margin-bottom: $sp-24
+    margin-bottom: $sp-24;
 }
 
 .title {
@@ -23,20 +27,28 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: $sp-24;
+    grid-template-columns: repeat(3, minmax(420px, 1fr));
+    gap: $sp-28;
     align-items: stretch;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1600px) {
     .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr))
+        grid-template-columns: repeat(3, minmax(480px, 1fr));
+        gap: $sp-32;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(340px, 1fr));
+        gap: $sp-24;
+    }
+}
+
+@media (max-width: 720px) {
     .grid {
         grid-template-columns: 1fr;
-        gap: $sp-20
+        gap: $sp-20;
     }
 }
