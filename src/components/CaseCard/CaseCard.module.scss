@@ -270,7 +270,11 @@
 }
 
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .btn {
+        z-index: 41;
+    }
+
     .story {
         line-height: 1.3;
     }

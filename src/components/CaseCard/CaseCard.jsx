@@ -99,7 +99,7 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                             onPointerUp={onBtnPointerUp}
                             onPointerCancel={onBtnPointerCancel}
                         >
-                            Click to View Story
+                            View Story
                         </button>
                     </div>
                 </div>
@@ -115,7 +115,7 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                             onPointerUp={onBtnPointerUp}
                             onPointerCancel={onBtnPointerCancel}
                         >
-                            Click to View Card
+                            View Card
                         </button>
                     </div>
                 </div>
