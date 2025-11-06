@@ -12,7 +12,7 @@ export const cases = [
       { date: 'Dec 2024', note: 'Fine decision issued' }
     ],
     story:
-      'A flaw in the “View As” feature allowed attackers to obtain access tokens for other users. Tokens were reset, and later enforcement followed due to the scale and impact.'
+      'In September 2018, Facebook disclosed a breach caused by a bug in the “View As” feature that let attackers steal access tokens and take over accounts. Facebook later confirmed 30 million users were affected; contact details and other profile data were accessed for many of them, and the company disabled “View As” and reset tokens. After investigation, Ireland’s Data Protection Commission issued a €251 million fine in December 2024 over the incident.'
   },
   {
     id: '23andme-2023',
@@ -27,7 +27,7 @@ export const cases = [
       { date: 'Sep 2024', note: 'Settlement reached' }
     ],
     story:
-      'Attackers logged into accounts using reused passwords and then leveraged sharing features to retrieve connected profiles at scale. The incident highlighted weak password hygiene and permissive defaults in social discovery.'
+      'In October 2023, genetic testing company 23andMe disclosed a major data breach. Hackers did not directly compromise the company\'s servers. Instead, they exploited credential stuffing, using leaked passwords from other websites to log in to 23andMe accounts. The breach impacted approximately 6.9 million users, nearly half of the company\'s customer base. Stolen information included names, profile details, and genetic and ancestry data. Some of this data came specifically from the “DNA Relatives” feature, which allows customers to share parts of their genetic profile to find relatives. Attackers later published samples online and offered the full dataset for sale on dark web forums, sometimes charging only a few dollars per profile.Sensitive emphasis was placed on profiles of Jewish and Chinese ancestry, raising concerns that genetic data could be misused for discrimination or targeted harassment.'
   },
   {
     id: 'linkedin-2024',
@@ -38,6 +38,6 @@ export const cases = [
     dataTypes: ['Profile data', 'Inferences for ads'],
     timeline: [{ date: 'Oct 2024', note: 'DPC decision published' }],
     story:
-      'Regulators found that advertising uses of personal data were not grounded in a clear lawful basis and lacked layered transparency. The decision forced changes to user choice and disclosures.'
+      'In October 2024, Ireland\'s Data Protection Commission fined LinkedIn €310M after finding the platform processed members\' personal data for targeted advertising without a valid legal basis and with inadequate transparency. The probe concluded LinkedIn used member data to build ad profiles and inferences, infringing GDPR principles of lawfulness, fairness, and transparency; the regulator ordered the company to bring processing into compliance. LinkedIn said it believed it had complied but would adjust its ad practices to meet the ruling. Reports note the case stemmed from complaints in the EU and ranks among the DPC\'s larger penalties.'
   }
 ]
