@@ -30,18 +30,10 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
     }, [])
 
     const toggle = () => setFlipped(v => !v)
-    const onKey = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } }
+    const onBtn = e => { e.stopPropagation(); toggle() }
 
     return (
-        <article
-            ref={ref}
-            className={`${styles.card} ${flipped ? styles.flipped : ''}`}
-            tabIndex={0}
-            role="button"
-            aria-pressed={flipped}
-            onClick={toggle}
-            onKeyDown={onKey}
-        >
+        <article ref={ref} className={`${styles.card} ${flipped ? styles.flipped : ''}`}>
             <div className={styles.inner} style={{ ['--h']: `${h}px` }}>
                 <div ref={frontRef} data-face="front" className={`${styles.face} ${styles.front}`}>
                     <header className={styles.head}>
@@ -83,11 +75,18 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                             </ul>
                         </div>
                     )}
+
+                    <div className={styles.footer}>
+                        <button type="button" className={styles.btn} onClick={onBtn}>View Story</button>
+                    </div>
                 </div>
 
                 <div ref={backRef} data-face="back" className={`${styles.face} ${styles.back}`}>
                     <h3 className={styles.title}>{item.title}</h3>
                     <p className={styles.story}>{item.story}</p>
+                    <div className={styles.footer}>
+                        <button type="button" className={styles.btn} onClick={onBtn}>View Card</button>
+                    </div>
                 </div>
             </div>
         </article>

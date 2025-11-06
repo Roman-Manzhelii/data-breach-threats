@@ -8,11 +8,6 @@
     font-family: $font-sans;
 }
 
-.card:focus-visible {
-    outline: 2px solid $c-accent-warning;
-    outline-offset: 2px;
-}
-
 .flipped {
     --rot: 180deg
 }
@@ -33,7 +28,7 @@
 .face {
     position: absolute;
     inset: 0;
-    padding: $sp-32 $sp-32 $sp-28;
+    padding: $sp-32 $sp-32 $sp-80;
     border-radius: inherit;
     background: $c-surface;
     color: $c-text;
@@ -223,15 +218,61 @@
     color: $c-text;
 }
 
+.footer {
+    position: absolute;
+    left: $sp-32;
+    right: $sp-32;
+    bottom: $sp-24;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-8;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba($c-text, .14);
+    background: rgba($c-text, .05);
+    color: $c-text;
+    font-weight: $fw-medium;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background $dur-200 $ease-out, border-color $dur-200 $ease-out, transform $dur-150 $ease-out, color $dur-200 $ease-out;
+}
+
+.btn:hover {
+    background: $c-accent-warning;
+    border-color: $c-accent-warning;
+    color: $c-text
+}
+
+.btn:active {
+    transform: translateY(1px)
+}
+
+.btn:focus-visible {
+    outline: 2px solid $c-accent-warning;
+    outline-offset: 2px
+}
+
 @media (max-width: 1024px) {
     .face {
-        padding: $sp-24
+        padding: $sp-24 $sp-24 $sp-64
+    }
+
+    .footer {
+        left: $sp-24;
+        right: $sp-24;
+        bottom: $sp-20
     }
 }
 
 @media (max-width: 640px) {
     .face {
-        padding: $sp-16
+        padding: $sp-16 $sp-16 $sp-56
     }
 
     .title {
@@ -250,5 +291,12 @@
     .fineSoft {
         justify-self: start;
         align-self: start
+    }
+
+    .footer {
+        left: $sp-16;
+        right: $sp-16;
+        bottom: $sp-16;
+        justify-content: flex-start
     }
 }
