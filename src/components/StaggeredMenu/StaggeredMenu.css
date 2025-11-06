@@ -5,7 +5,7 @@
   z-index: 40;
 }
 
-.staggered-menu-wrapper.fixed-wrapper {
+.staggered-menu-wrapper.fixed-wrapper[data-open] {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,6 +13,14 @@
   height: 100vh;
   z-index: 40;
   overflow: hidden;
+}
+
+.staggered-menu-wrapper.fixed-wrapper:not([data-open]) {
+  position: static;
+  width: auto;
+  height: auto;
+  z-index: auto;
+  overflow: visible;
 }
 
 .staggered-menu-header {
