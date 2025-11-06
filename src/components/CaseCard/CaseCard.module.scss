@@ -269,34 +269,3 @@
         bottom: $sp-20
     }
 }
-
-@media (max-width: 640px) {
-    .face {
-        padding: $sp-16 $sp-16 $sp-56
-    }
-
-    .title {
-        font-size: clamp(26px, 6vw, 34px)
-    }
-
-    .kvRow {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto
-    }
-
-    .labelRight {
-        justify-self: start
-    }
-
-    .fineSoft {
-        justify-self: start;
-        align-self: start
-    }
-
-    .footer {
-        left: $sp-16;
-        right: $sp-16;
-        bottom: $sp-16;
-        justify-content: flex-start
-    }
-}

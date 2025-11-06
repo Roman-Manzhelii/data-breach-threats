@@ -30,7 +30,22 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
     }, [])
 
     const toggle = () => setFlipped(v => !v)
-    const onBtn = e => { e.stopPropagation(); toggle() }
+
+    const pressId = useRef(null)
+    const onBtnPointerDown = e => {
+        e.stopPropagation()
+        pressId.current = e.pointerId
+        if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId)
+    }
+    const onBtnPointerUp = e => {
+        e.stopPropagation()
+        if (pressId.current === e.pointerId) {
+            pressId.current = null
+            if (e.currentTarget.releasePointerCapture) e.currentTarget.releasePointerCapture(e.pointerId)
+            toggle()
+        }
+    }
+    const onBtnPointerCancel = () => { pressId.current = null }
 
     return (
         <article ref={ref} className={`${styles.card} ${flipped ? styles.flipped : ''}`}>
@@ -77,7 +92,15 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                     )}
 
                     <div className={styles.footer}>
-                        <button type="button" className={styles.btn} onClick={onBtn}>View Story</button>
+                        <button
+                            type="button"
+                            className={styles.btn}
+                            onPointerDown={onBtnPointerDown}
+                            onPointerUp={onBtnPointerUp}
+                            onPointerCancel={onBtnPointerCancel}
+                        >
+                            Click to View Story
+                        </button>
                     </div>
                 </div>
 
@@ -85,7 +108,15 @@ const CaseCard = forwardRef(function CaseCard({ item }, ref) {
                     <h3 className={styles.title}>{item.title}</h3>
                     <p className={styles.story}>{item.story}</p>
                     <div className={styles.footer}>
-                        <button type="button" className={styles.btn} onClick={onBtn}>View Card</button>
+                        <button
+                            type="button"
+                            className={styles.btn}
+                            onPointerDown={onBtnPointerDown}
+                            onPointerUp={onBtnPointerUp}
+                            onPointerCancel={onBtnPointerCancel}
+                        >
+                            Click to View Card
+                        </button>
                     </div>
                 </div>
             </div>

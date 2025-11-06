@@ -9,7 +9,7 @@ export default function App() {
   const [showQuiz, setShowQuiz] = useState(false)
   return (
     <>
-      <TopNav items={routes} />
+      {/* <TopNav items={routes} /> */}
       <main>
         <Anchor id="intro" />
         <Intro />
