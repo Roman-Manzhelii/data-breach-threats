@@ -122,7 +122,7 @@
     font-family: $font-sans;
     font-weight: $fw-medium;
     opacity: .9;
-    font-size: clamp(17px, 2vw, 20px);
+    font-size: clamp(15px, 2vw, 17px);
     line-height: 1.3;
     color: $c-text;
 }
@@ -150,7 +150,7 @@
     border: 0;
     font-family: $font-sans;
     font-weight: $fw-medium;
-    font-size: clamp(17px, 2vw, 20px);
+    font-size: clamp(15px, 2vw, 17px);
     line-height: 1.3;
     color: $c-text;
     opacity: .9;
@@ -170,7 +170,7 @@
     position: absolute;
     left: var(--rail-x);
     top: 0;
-    bottom: 0;
+    bottom: $sp-20;
     width: var(--rail-w);
     background: $c-accent-warning;
     border-radius: 1px;
@@ -240,7 +240,6 @@
     font-size: 14px;
     line-height: 1;
     cursor: pointer;
-    transition: background $dur-200 $ease-out, border-color $dur-200 $ease-out, transform $dur-150 $ease-out, color $dur-200 $ease-out;
 }
 
 .btn:hover {
@@ -267,5 +266,12 @@
         left: $sp-24;
         right: $sp-24;
         bottom: $sp-20
+    }
+}
+
+
+@media (max-width: 640px) {
+    .story {
+        line-height: 1.3;
     }
 }

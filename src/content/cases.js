@@ -3,7 +3,7 @@ export const cases = [
     id: 'meta-2018',
     title: 'Meta',
     year: 2018,
-    vector: 'Access token exposure via View As',
+    vector: 'Access token exposure via "View As" button',
     enforcement: { amount: 251000000, currency: 'EUR', year: 2024 },
     dataTypes: ['Profile data', 'Contact info'],
     timeline: [
@@ -12,13 +12,13 @@ export const cases = [
       { date: 'Dec 2024', note: 'Fine decision issued' }
     ],
     story:
-      'In September 2018, Facebook disclosed a breach caused by a bug in the “View As” feature that let attackers steal access tokens and take over accounts. Facebook later confirmed 30 million users were affected; contact details and other profile data were accessed for many of them, and the company disabled “View As” and reset tokens. After investigation, Ireland’s Data Protection Commission issued a €251 million fine in December 2024 over the incident.'
+      'In September 2018, Facebook disclosed a breach caused by a bug in the “View As” feature that let attackers steal access tokens and take over accounts. Facebook later confirmed 30 million users were affected; contact details and other profile data were accessed for many of them, and the company disabled “View As” and reset tokens. After investigation, Ireland\'s Data Protection Commission issued a €251 million fine in December 2024 over the incident.'
   },
   {
     id: '23andme-2023',
     title: '23andMe',
     year: 2023,
-    vector: 'Credential stuffing and sharing feature abuse',
+    vector: 'Account takeover via credential stuffing.',
     enforcement: { amount: 30000000, currency: 'USD', year: 2024 },
     dataTypes: ['Ancestry estimates', 'Family relationships'],
     timeline: [
@@ -33,7 +33,7 @@ export const cases = [
     id: 'linkedin-2024',
     title: 'LinkedIn',
     year: 2024,
-    vector: 'Insufficient lawful basis and transparency for ads',
+    vector: 'Ad targeting without a lawful basis. Inadequate transparency',
     enforcement: { amount: 310000000, currency: 'EUR', year: 2024 },
     dataTypes: ['Profile data', 'Inferences for ads'],
     timeline: [{ date: 'Oct 2024', note: 'DPC decision published' }],
