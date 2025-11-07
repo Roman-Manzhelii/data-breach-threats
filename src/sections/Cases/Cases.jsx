@@ -32,9 +32,6 @@ export default function Cases() {
 
   return (
     <section id="cases" className={styles.wrap}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>Case Studies</h2>
-      </div>
       <div ref={gridRef} className={styles.grid}>
         {cases.slice(0, 3).map((item, i) => (
           <CaseCard

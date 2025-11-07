@@ -4,6 +4,7 @@ import TopNav from '../components/TopNav/TopNav.jsx'
 import Anchor from '../components/Anchor/Anchor.jsx'
 import Intro from '../sections/Intro/Intro.jsx'
 import Cases from '../sections/Cases/Cases.jsx'
+import GDPR from '../sections/GDPR/GDPR.jsx'
 
 export default function App() {
   const [showQuiz, setShowQuiz] = useState(false)
@@ -17,12 +18,10 @@ export default function App() {
         <Anchor id="cases" />
         <Cases />
 
-        {/* <Anchor id="gdpr" />
-        <section className="section container">
-          <h2>GDPR essentials</h2>
-        </section>
+        <Anchor id="gdpr" />
+        <GDPR />
 
-        <Anchor id="playbook" />
+        {/* <Anchor id="playbook" />
         <section className="section container">
           <h2>Breach playbook</h2>
         </section>
