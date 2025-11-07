@@ -11,7 +11,7 @@ export default function GDPR() {
 
   return (
     <section id="gdpr" className={styles.gdpr}>
-      <div className="container">
+      {/* <div className="container"> */}
         <div className={styles.grid}>
           <Lottie
             className={styles.lottie}
@@ -59,7 +59,7 @@ export default function GDPR() {
             </a>
           </article>
         </div>
-      </div>
+      {/* </div> */}
     </section>
   );
 }

@@ -5,7 +5,7 @@ export const gdprIntro = {
     summary:
       "If a personal data breach occurs and you become aware of it, notify the supervisory authority without undue delay and, where feasible, not later than 72 hours.",
     linkText: "Read GDPR Art.33",
-    href: "https://gdpr.eu/article-33-notification-of-a-personal-data-breach-to-the-supervisory-authority/",
+    href: "https://gdpr.eu/article-33-notification-of-a-personal-data-breach/",
   },
   a32: {
     id: "32",
@@ -21,6 +21,6 @@ export const gdprIntro = {
     summary:
       "If a breach is likely to result in high risk to individuals, inform data subjects without undue delay in clear and plain language.",
     linkText: "Read GDPR Art.34",
-    href: "https://gdpr.eu/article-34-communication-of-a-personal-data-breach-to-the-data-subject/",
+    href: "https://gdpr.eu/article-34-communication-of-a-personal-data-breach/",
   },
 };

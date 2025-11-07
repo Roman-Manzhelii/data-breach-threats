@@ -8,12 +8,12 @@
         "p2 p2 p3 p3";
     gap: $sp-80 $sp-80;
     align-items: start;
-    padding: $sp-80 0;
+    padding: $sp-80 $sp-56 ;
 }
 
 .lottie {
     grid-area: l;
-    width: clamp(150px, 30vw, 180px);
+    width: clamp(130px, 15vw, 180px);
     height: auto;
     justify-self: end;
 }
@@ -42,33 +42,72 @@
 
 .definition {
     margin: 0 0 $sp-12;
-    max-width: 80ch;
+    max-width: 60ch;
     font-family: $font-sans;
     font-weight: $fw-regular;
-    font-size: clamp(14px, 2vw, 20px);
+    font-size: clamp(14px, 2vw, 22px);
     line-height: $lh-normal;
     opacity: .9;
     text-align: justify;
 }
 
 .link {
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-    opacity: .9;
-    border-bottom: 1px solid currentColor;
+  background-image: linear-gradient(
+    to right,
+    $c-accent-warning,
+    $c-accent-warning 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+  opacity: .9;
+  border-bottom: 2px solid currentColor;
 }
 
-@media (max-width: 900px) {
+.link:before{
+  content: '';
+  background: $c-accent-warning;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+ background-position: 0;
+}
+
+.link:hover::before{
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        gap: $sp-80 $sp-40;
+    }
+}
+
+@media (max-width: 640px) {
     .grid {
         grid-template-columns: 1fr;
         grid-template-areas:
             "p1"
             "p2"
             "p3";
-        row-gap: $sp-16;
+        row-gap: $sp-40;
     }
-
+    .lottie {
+        display: none;
+    }
     .question {
         text-align: left;
     }
