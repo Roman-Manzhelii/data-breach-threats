@@ -273,11 +273,13 @@ export const StaggeredMenu = ({
         setClosing(false);
         setOpen(false);
         openRef.current = false;
-        enableScroll();
 
         const href = pendingHrefRef.current;
         pendingHrefRef.current = null;
-        if (href) requestAnimationFrame(() => navigateTo(href));
+        requestAnimationFrame(() => {
+          enableScroll();
+          if (href) navigateTo(href);
+        });
       },
     });
   }, [position, enableScroll, navigateTo]);
@@ -370,8 +372,10 @@ export const StaggeredMenu = ({
       disableScroll();
     } else {
       panel.setAttribute("inert", "");
+      enableScroll();
     }
-  }, [open, closing, disableScroll]);
+    return () => enableScroll();
+  }, [open, closing, disableScroll, enableScroll]);
 
   const toggleMenu = useCallback(() => {
     const target = !openRef.current;
