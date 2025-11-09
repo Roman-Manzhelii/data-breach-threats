@@ -1,35 +1,73 @@
-import { useMemo } from "react";
+import { useMemo, useState, useCallback } from "react";
 import styles from "./Playbook.module.scss";
 import Stepper, { Step } from "../../components/Stepper/Stepper";
-import { playbook } from "../../content/playbooks";
+import { individuals } from "../../content/individuals";
+import { playbookOrg } from "../../content/playbook_org";
 
 export default function Playbook() {
-    const data = useMemo(() => playbook, []);
-    return (
-        <section id="playbook" className={styles.wrap}>
-            <div className={styles.header}>
-                <h2 className={styles.title}>{data.title}</h2>
-                <p className={styles.lead}>{data.subtitle}</p>
-            </div>
+    const IND = useMemo(() => individuals, []);
+    const ORG = useMemo(() => playbookOrg, []);
+    const [tab, setTab] = useState("ind");
+    const data = tab === "ind" ? IND : ORG;
 
-            <div className={styles.stepper}>
-                <Stepper
-                    initialStep={1}
-                    backButtonText="Previous"
-                    nextButtonText="Next"
+    const onKeyTabs = useCallback((e) => {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+            setTab((t) => (t === "ind" ? "org" : "ind"));
+        }
+    }, []);
+
+    return (
+        <section id="playbook">
+            <header className={styles.header}>
+                <p className={styles.lead}>Follow these steps when you suspect a personal data breach.</p>
+            </header>
+
+            <div className={styles.card}>
+                <div
+                    className={styles.tabs}
+                    role="tablist"
+                    aria-label="Choose audience"
+                    onKeyDown={onKeyTabs}
                 >
-                    {data.steps.map((s) => (
-                        <Step key={s.t}>
-                            <h3 className={styles.stepTitle}>{s.t}</h3>
-                            <p className={styles.stepText}>{s.p}</p>
-                            <ul className={styles.list}>
-                                {s.bullets.map((b, i) => (
-                                    <li key={i}>{b}</li>
-                                ))}
-                            </ul>
-                        </Step>
-                    ))}
-                </Stepper>
+                    <button
+                        role="tab"
+                        aria-selected={tab === "ind"}
+                        aria-controls="panel-ind"
+                        id="tab-ind"
+                        className={`${styles.tab} ${tab === "ind" ? styles.tabActive : ""}`}
+                        onClick={() => setTab("ind")}
+                    >
+                        Individuals
+                    </button>
+                    <button
+                        role="tab"
+                        aria-selected={tab === "org"}
+                        aria-controls="panel-org"
+                        id="tab-org"
+                        className={`${styles.tab} ${tab === "org" ? styles.tabActive : ""}`}
+                        onClick={() => setTab("org")}
+                    >
+                        Organisations
+                    </button>
+                </div>
+
+                <div
+                    id={tab === "ind" ? "panel-ind" : "panel-org"}
+                    role="tabpanel"
+                    aria-labelledby={tab === "ind" ? "tab-ind" : "tab-org"}
+                    className={styles.panel}
+                >
+                    <div className={styles.stepper}>
+                        <Stepper initialStep={1} backButtonText="Previous" nextButtonText="Next">
+                            {data.steps.map((s) => (
+                                <Step key={s.t}>
+                                    <h4 className={styles.stepTitle}>{s.t}</h4>
+                                    <p className={styles.stepText}>{s.p}</p>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </div>
+                </div>
             </div>
         </section>
     );
