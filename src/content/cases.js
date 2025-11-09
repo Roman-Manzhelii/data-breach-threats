@@ -27,7 +27,7 @@ export const cases = [
       { date: 'Sep 2024', note: 'Settlement reached' }
     ],
     story:
-      'In October 2023, genetic testing company 23andMe disclosed a major data breach. Hackers did not directly compromise the company\'s servers. Instead, they exploited credential stuffing, using leaked passwords from other websites to log in to 23andMe accounts. The breach impacted approximately 6.9 million users, nearly half of the company\'s customer base. Stolen information included names, profile details, and genetic and ancestry data. Attackers later published samples online and offered the full dataset for sale on dark web forums, sometimes charging only a few dollars per profile.Sensitive emphasis was placed on profiles of Jewish and Chinese ancestry, raising concerns that genetic data could be misused for discrimination or targeted harassment.'
+      'In October 2023, genetic testing company 23andMe disclosed a major data breach. Hackers did not directly compromise the company\'s servers. Instead, they exploited credential stuffing, using leaked passwords from other websites to log in to 23andMe accounts. The breach impacted approximately 6.9 million users, nearly half of the company\'s customer base. Stolen information included names, profile details, genetic and ancestry data. Attackers later published samples online and offered the full dataset for sale on dark web forums, sometimes charging only a few dollars per profile. Sensitive emphasis was placed on profiles of Jewish and Chinese ancestry, raising concerns that genetic data could be misused for discrimination or targeted harassment.'
   },
   {
     id: 'linkedin-2024',
