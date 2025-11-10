@@ -56,7 +56,7 @@ export default function Intro() {
           <div className={styles.center}>
             <DecryptedText
               text={intro.impactTitle}
-              speed={40}
+              speed={20}
               sequential
               useOriginalCharsOnly
               animateOn="hover"
