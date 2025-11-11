@@ -1,10 +1,10 @@
-@use '../../styles/tokens' as *;
+@use '../../styles/tokens'as *;
 
 .header {
   text-align: center;
   display: grid;
-  gap: $sp-12;
   justify-items: center;
+  margin-bottom: $sp-24;
 }
 
 .lead {
@@ -83,4 +83,17 @@
   font-size: $fs-h2;
   letter-spacing: $ls-tight;
   line-height: $lh-tight;
+}
+
+@media (max-width: 420px) {
+  .stepTitle {
+    font-size: clamp(18px, 5vw, 20px);
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  .stepText {
+    font-size: clamp(14px, 4.2vw, 16px);
+    line-height: 1.45;
+  }
 }

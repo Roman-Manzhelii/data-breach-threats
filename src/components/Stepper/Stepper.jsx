@@ -1,10 +1,18 @@
-import React, { useState, Children, useRef, useLayoutEffect } from "react";
+import React, {
+  useState,
+  Children,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+} from "react";
 import { motion, AnimatePresence } from "motion/react";
 import "./Stepper.css";
 
 export default function Stepper({
   children,
   initialStep = 1,
+  controlledStep,
+  externalDirection = 0,
   onStepChange = () => {},
   onFinalStepCompleted = () => {},
   stepCircleContainerClassName = "",
@@ -26,6 +34,18 @@ export default function Stepper({
   const totalSteps = stepsArray.length;
   const isCompleted = currentStep > totalSteps;
   const isLastStep = currentStep === totalSteps;
+
+  useEffect(() => {
+    if (
+      typeof controlledStep === "number" &&
+      controlledStep >= 1 &&
+      controlledStep !== currentStep
+    ) {
+      setDirection(externalDirection);
+      setCurrentStep(controlledStep);
+      onStepChange(controlledStep);
+    }
+  }, [controlledStep]);
 
   const viewportMin =
     typeof window !== "undefined" && window.innerWidth >= 1024 ? 320 : 220;
@@ -50,11 +70,6 @@ export default function Stepper({
       setDirection(1);
       updateStep(currentStep + 1);
     }
-  };
-
-  const handleComplete = () => {
-    setDirection(1);
-    updateStep(totalSteps + 1);
   };
 
   return (
@@ -150,9 +165,9 @@ function StepContentWrapper({
   return (
     <motion.div
       className={className}
-      style={{ position: "relative", overflow: "hidden" }}
+      style={{ position: "relative", overflow: "hidden", willChange: "height" }}
       animate={{ height: isCompleted ? 0 : Math.max(parentHeight, minHeight) }}
-      transition={{ type: "spring", duration: 0.4 }}
+      transition={{ type: "tween", duration: 0.18, ease: "linear" }}
     >
       <AnimatePresence initial={false} mode="sync" custom={direction}>
         {!isCompleted && (
@@ -184,8 +199,14 @@ function SlideTransition({ children, direction, onHeightReady }) {
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.4 }}
-      style={{ position: "absolute", left: 0, right: 0, top: 0 }}
+      transition={{ duration: 0.18, ease: "linear" }}
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        willChange: "transform",
+      }}
     >
       {children}
     </motion.div>
@@ -193,9 +214,15 @@ function SlideTransition({ children, direction, onHeightReady }) {
 }
 
 const stepVariants = {
-  enter: (dir) => ({ x: dir >= 0 ? "-100%" : "100%", opacity: 0 }),
+  enter: (dir) => ({
+    x: dir > 0 ? "-8%" : dir < 0 ? "8%" : "0%",
+    opacity: 1,
+  }),
   center: { x: "0%", opacity: 1 },
-  exit: (dir) => ({ x: dir >= 0 ? "50%" : "-50%", opacity: 0 }),
+  exit: (dir) => ({
+    x: dir > 0 ? "8%" : dir < 0 ? "-8%" : "0%",
+    opacity: 1,
+  }),
 };
 
 export function Step({ children }) {
@@ -232,7 +259,7 @@ function StepIndicator({
           active: { scale: 1, backgroundColor: "#5227FF", color: "#5227FF" },
           complete: { scale: 1, backgroundColor: "#5227FF", color: "#3b82f6" },
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.2, ease: "linear" }}
         className="step-indicator-inner"
       >
         {status === "complete" ? (
@@ -260,7 +287,7 @@ function StepConnector({ isComplete }) {
         variants={lineVariants}
         initial={false}
         animate={isComplete ? "complete" : "incomplete"}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.18, ease: "linear" }}
       />
     </div>
   );
@@ -278,12 +305,7 @@ function CheckIcon(props) {
       <motion.path
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
-        transition={{
-          delay: 0.1,
-          type: "tween",
-          ease: "easeOut",
-          duration: 0.3,
-        }}
+        transition={{ type: "tween", ease: "linear", duration: 0.15 }}
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M5 13l4 4L19 7"
