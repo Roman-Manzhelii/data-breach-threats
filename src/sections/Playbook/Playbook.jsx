@@ -34,7 +34,7 @@ export default function Playbook() {
       <header className={styles.header}>
         <DecryptedText
           text={"Follow these steps when you suspect a personal data breach"}
-          speed={20}
+          speed={25}
           sequential
           useOriginalCharsOnly
           animateOn="view"
