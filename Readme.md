@@ -1,1 +1,1 @@
-https://roman-manzhelii.github.io/legal-issues-in-computing-quiz/
+https://roman-manzhelii.github.io/data-breach-threats/
