@@ -85,10 +85,16 @@ main {
   padding-top: 72px;
 }
 
-/* snap */
 html {
-  scroll-behavior: smooth;
   scroll-snap-type: y proximity;
+}
+
+html.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+html.snap-off {
+  scroll-snap-type: none !important;
 }
 
 .snapSection {
