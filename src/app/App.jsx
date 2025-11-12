@@ -6,6 +6,7 @@ import Intro from '../sections/Intro/Intro.jsx'
 import Cases from '../sections/Cases/Cases.jsx'
 import GDPR from '../sections/GDPR/GDPR.jsx'
 import Playbook from '../sections/Playbook/Playbook.jsx'
+import Footer from '../sections/Footer/Footer.jsx'
 
 export default function App() {
   const [showQuiz, setShowQuiz] = useState(false)
@@ -24,6 +25,8 @@ export default function App() {
 
         <Anchor id="playbook" />
         <Playbook />
+
+        <Footer />
       </main>
     </>
   )
