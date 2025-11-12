@@ -1,7 +1,5 @@
 @use '../../styles/tokens'as *;
-.gdpr {
-    margin: $sp-80 auto
-}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -94,11 +92,11 @@
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    .grid {
-        gap: $sp-80 $sp-40;
-    }
-}
+// @media (max-width: 768px) {
+//     .grid {
+//         gap: $sp-80 $sp-40;
+//     }
+// }
 
 @media (max-width: 640px) {
     .grid {

@@ -18,15 +18,22 @@ export default function App() {
         <Intro />
 
         <Anchor id="cases" />
-        <Cases />
+        <section className="section snapSection">
+          <Cases />
+        </section>
 
         <Anchor id="gdpr" />
-        <GDPR />
+        <section className="section snapSection">
+          <GDPR />
+        </section>
 
         <Anchor id="playbook" />
-        <Playbook />
+        <section className="section snapSection">
+          <Playbook />
+        </section>
 
-        <Footer />
+        <Anchor id="references" />
+          <Footer />
       </main>
     </>
   )
