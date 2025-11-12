@@ -86,7 +86,7 @@ export default function TopNav({ items = [] }) {
             openMenuButtonColor="#131313"
             changeMenuColorOnOpen={false}
             colors={['#F9F9F9', '#E5E5E5']}
-            accentColor="#ffb100"
+            accentColor="#5227ff"
             isFixed={true}
           />
         </div>
