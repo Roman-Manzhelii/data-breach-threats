@@ -1,8 +1,85 @@
 @use '../../styles/tokens' as *;
 
-.anchor {
+$w-desktop: 90vw;
+$w-tablet: 86vw;
+$w-phone: 94vw;
+
+.wrap {
+    position: relative;
+}
+
+.marker {
     position: relative;
     top: -72px;
     display: block;
-    height: 0
+    height: 0;
+}
+
+.rule {
+    width: $w-desktop;
+    margin: $sp-12 0 $sp-8;
+    margin-left: calc(50% - (#{$w-desktop} / 2));
+    margin-right: calc(50% - (#{$w-desktop} / 2));
+}
+
+.line {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: $c-muted;
+}
+
+.line::before {
+    content: "";
+    position: absolute;
+    left: $sp-16;
+    top: -6px;
+    width: clamp(160px, 22vw, 260px);
+    height: 6px;
+    background: $c-muted;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.caption {
+    width: $w-desktop;
+    margin: $sp-8 0 0;
+    margin-left: calc(50% - (#{$w-desktop} / 2));
+    margin-right: calc(50% - (#{$w-desktop} / 2));
+    padding-left: $sp-16;
+    font-family: $font-sans;
+    font-weight: $fw-semibold;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $c-text;
+}
+
+@media (max-width: 1024px) {
+
+    .rule,
+    .caption {
+        width: $w-tablet;
+        margin-left: calc(50% - (#{$w-tablet} / 2));
+        margin-right: calc(50% - (#{$w-tablet} / 2));
+    }
+
+    .line::before {
+        width: clamp(150px, 28vw, 260px);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .rule,
+    .caption {
+        width: $w-phone;
+        margin-left: calc(50% - (#{$w-phone} / 2));
+        margin-right: calc(50% - (#{$w-phone} / 2));
+    }
+
+    .line::before {
+        width: clamp(140px, 36vw, 260px);
+        left: $sp-12;
+    }
 }
