@@ -9,6 +9,7 @@ import whatToDo from '../../assets/what-to-do.json'
 
 export default function Intro() {
   const wrapRef = useRef(null)
+  const lottieRef = useRef(null)
   const [p, setP] = useState(0)
   const reduced = useReducedMotion()
 
@@ -45,6 +46,33 @@ export default function Intro() {
     }
   }, [])
 
+  useEffect(() => {
+    if (reduced) return
+
+    let started = false
+    const start = () => {
+      if (started) return
+      started = true
+      lottieRef.current?.stop?.()
+      requestAnimationFrame(() => lottieRef.current?.play?.())
+    }
+
+    const onVisible = () => {
+      if (document.hidden) {
+        lottieRef.current?.pause?.()
+      } else {
+        start()
+      }
+    }
+
+    start()
+    document.addEventListener('visibilitychange', onVisible, { passive: true })
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible)
+    }
+  }, [reduced])
+
   const step1 = p > 0.12
   const step2 = p > 0.32
   const step3 = p > 0.54
@@ -55,12 +83,21 @@ export default function Intro() {
       <div className="container">
         <div className={styles.heroGrid}>
           <h1 className={styles.question}>{intro.question}</h1>
+
           <Lottie
+            lottieRef={lottieRef}
             className={styles.lottie}
             animationData={whatToDo}
             autoplay={!reduced}
             loop={!reduced}
+            rendererSettings={{
+              progressiveLoad: true,
+              preserveAspectRatio: 'xMidYMid meet',
+              imagePreserveAspectRatio: 'xMidYMid meet',
+              hideOnTransparent: true,
+            }}
           />
+
           <p className={styles.definition}>{intro.definition}</p>
         </div>
       </div>
