@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import styles from './Intro.module.scss'
 import { intro } from '../../content/intro'
 import DecryptedText from '../../components/DecryptedText/DecryptedText'
@@ -13,13 +13,17 @@ export default function Intro() {
   const [p, setP] = useState(0)
   const reduced = useReducedMotion()
 
+  // iOS WebKit детект
+  const isIOSWebKit = useMemo(() => {
+    const ua = navigator.userAgent || ''
+    return /iPad|iPhone|iPod/.test(ua) && /AppleWebKit/.test(ua)
+  }, [])
+
   useEffect(() => {
     const el = wrapRef.current
     if (!el) return
-
     let raf = 0
     const clamp01 = (v) => Math.max(0, Math.min(1, v))
-
     const measure = () => {
       const start = el.offsetTop
       const end = start + el.offsetHeight - window.innerHeight
@@ -27,17 +31,14 @@ export default function Intro() {
       const prog = clamp01((window.scrollY - start) / denom)
       setP(prog)
     }
-
     const onScroll = () => {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(measure)
     }
-
     measure()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', measure)
     window.addEventListener('orientationchange', measure)
-
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)
@@ -46,32 +47,18 @@ export default function Intro() {
     }
   }, [])
 
-  useEffect(() => {
-    if (reduced) return
+  // Гарантований старт на iOS: після створення DOM шарів
+  const handleDOMLoaded = () => {
+    // деякі iOS збивають автоплей — перезапустимо явно з 0 кадру
+    lottieRef.current?.stop?.()
+    requestAnimationFrame(() => {
+      lottieRef.current?.goToAndPlay?.(0, true)
+    })
+  }
 
-    let started = false
-    const start = () => {
-      if (started) return
-      started = true
-      lottieRef.current?.stop?.()
-      requestAnimationFrame(() => lottieRef.current?.play?.())
-    }
-
-    const onVisible = () => {
-      if (document.hidden) {
-        lottieRef.current?.pause?.()
-      } else {
-        start()
-      }
-    }
-
-    start()
-    document.addEventListener('visibilitychange', onVisible, { passive: true })
-
-    return () => {
-      document.removeEventListener('visibilitychange', onVisible)
-    }
-  }, [reduced])
+  // Якщо iOS помилково репортує reduced — все одно вмикаємо автоплей
+  const shouldAutoplay = !reduced || isIOSWebKit
+  const shouldLoop = !reduced // для реального reduced лишаємо без петлі
 
   const step1 = p > 0.12
   const step2 = p > 0.32
@@ -88,12 +75,16 @@ export default function Intro() {
             lottieRef={lottieRef}
             className={styles.lottie}
             animationData={whatToDo}
-            autoplay={!reduced}
-            loop={!reduced}
+            // ключове: canvas на iOS, svg на решті
+            renderer={isIOSWebKit ? 'canvas' : 'svg'}
+            autoplay={shouldAutoplay}
+            loop={shouldLoop}
+            onDOMLoaded={handleDOMLoaded}
             rendererSettings={{
-              progressiveLoad: true,
+              // для canvas рендера на iOS
+              clearCanvas: true,
               preserveAspectRatio: 'xMidYMid meet',
-              imagePreserveAspectRatio: 'xMidYMid meet',
+              progressiveLoad: false,
               hideOnTransparent: true,
             }}
           />
