@@ -1,5 +1,7 @@
 @use '../../styles/tokens'as *;
-
+.gdpr {
+    margin: $sp-80 auto
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -7,8 +9,9 @@
         "l p1 p1 p1"
         "p2 p2 p3 p3";
     gap: $sp-80 $sp-80;
-    align-items: start;
-    padding: $sp-80 $sp-56 ;
+    align-items: center;
+    justify-self: center;
+    padding: $sp-80 $sp-56;
 }
 
 .lottie {
@@ -20,14 +23,17 @@
 
 .a33 {
     grid-area: p1;
+    max-width: 72ch;
 }
 
 .a32 {
     grid-area: p2;
+    max-width: 72ch;
 }
 
 .a34 {
     grid-area: p3;
+    max-width: 72ch;
 }
 
 .question {
@@ -52,42 +58,40 @@
 }
 
 .link {
-  background-image: linear-gradient(
-    to right,
-    $c-blue,
-    $c-blue 50%,
-    #000 50%
-  );
-  background-size: 200% 100%;
-  background-position: -100%;
-  display: inline-block;
-  padding: 5px 0;
-  position: relative;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;
-  opacity: .9;
-  border-bottom: 2px solid currentColor;
+    background-image: linear-gradient(to right,
+            $c-blue,
+            $c-blue 50%,
+            #000 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    opacity: .9;
+    border-bottom: 2px solid currentColor;
 }
 
-.link:before{
-  content: '';
-  background: $c-blue;
-  display: block;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  transition: all 0.3s ease-in-out;
+.link:before {
+    content: '';
+    background: $c-blue;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
 }
 
 .link:hover {
- background-position: 0;
+    background-position: 0;
 }
 
-.link:hover::before{
-  width: 100%;
+.link:hover::before {
+    width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -105,9 +109,11 @@
             "p3";
         row-gap: $sp-40;
     }
+
     .lottie {
         display: none;
     }
+
     .question {
         text-align: left;
     }
