@@ -54,8 +54,8 @@
 .link {
   background-image: linear-gradient(
     to right,
-    $c-accent-warning,
-    $c-accent-warning 50%,
+    $c-blue,
+    $c-blue 50%,
     #000 50%
   );
   background-size: 200% 100%;
@@ -72,7 +72,7 @@
 
 .link:before{
   content: '';
-  background: $c-accent-warning;
+  background: $c-blue;
   display: block;
   position: absolute;
   bottom: -3px;

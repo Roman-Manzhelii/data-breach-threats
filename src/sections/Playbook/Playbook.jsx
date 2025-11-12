@@ -33,7 +33,7 @@ export default function Playbook() {
     <section id="playbook">
       <header className={styles.header}>
         <DecryptedText
-          text={"Follow these steps when you suspect a personal data breach"}
+          text={"Follow these steps when you suspect a data breach"}
           speed={25}
           sequential
           useOriginalCharsOnly

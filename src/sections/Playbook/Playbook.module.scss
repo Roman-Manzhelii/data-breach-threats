@@ -4,7 +4,7 @@
   text-align: center;
   display: grid;
   justify-items: center;
-  margin-bottom: $sp-24;
+  margin: $sp-24;
 }
 
 .lead {
@@ -61,17 +61,16 @@
 .stepTitle {
   font-family: $font-sans;
   font-weight: $fw-bold;
-  font-size: $fs-h3;
+  font-size: clamp(24px, 2.8vw, 30px);
   letter-spacing: $ls-tight;
   line-height: $lh-tight;
   color: $c-text;
 }
 
 .stepText {
-  margin-top: $sp-8;
   font-family: $font-sans;
   font-weight: $fw-regular;
-  font-size: $fs-body;
+  font-size: clamp(14px, 2vw, 22px);
   line-height: $lh-normal;
   color: $c-text;
   opacity: .9;
@@ -89,12 +88,12 @@
   .stepTitle {
     font-size: clamp(18px, 5vw, 20px);
     letter-spacing: 0;
-    line-height: 1.2;
+    line-height: $lh-tight;
   }
 
   .stepText {
-    font-size: clamp(14px, 4.2vw, 16px);
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: $lh-tight;
   }
 
   .centerText {
