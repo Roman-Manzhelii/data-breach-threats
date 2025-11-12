@@ -22,13 +22,13 @@
     font-size: clamp(24px, 2.8vw, 40px);
     letter-spacing: $ls-tight;
     line-height: $lh-tight;
-    text-align:justify;
+    text-align: justify;
 }
 
 .definition {
     grid-area: d;
     margin: 0 auto;
-    text-align:justify;
+    text-align: justify;
     max-width: 80ch;
     font-family: $font-sans;
     font-weight: $fw-regular;
@@ -45,15 +45,27 @@
 }
 
 .stageWrap {
-    height: 320vh;
+    height: 320svh;
     position: relative;
+}
+
+@supports not (height: 1svh) {
+    .stageWrap {
+        height: 320vh;
+    }
 }
 
 .stagePin {
     position: sticky;
     top: 72px;
-    height: calc(100vh - 72px);
+    height: calc(100svh - 72px);
     isolation: isolate;
+}
+
+@supports not (height: 1svh) {
+    .stagePin {
+        height: calc(100vh - 72px);
+    }
 }
 
 .center {
@@ -84,7 +96,7 @@
     font-size: clamp(14px, 2vw, 22px);
     line-height: $lh-normal;
     opacity: .9;
-    text-align:justify;
+    text-align: justify;
 }
 
 .warn {
@@ -121,7 +133,6 @@
 }
 
 @media (max-width: 768px) {
-
     .heroGrid {
         grid-template-columns: minmax(0, 1fr) auto;
         grid-template-areas:
@@ -146,7 +157,13 @@
 
 @media (max-width: 1024px) {
     .stageWrap {
-        height: 260vh
+        height: 260svh;
+    }
+
+    @supports not (height: 1svh) {
+        .stageWrap {
+            height: 260vh;
+        }
     }
 }
 

@@ -15,26 +15,40 @@ export default function Intro() {
   useEffect(() => {
     const el = wrapRef.current
     if (!el) return
-    const onScroll = () => {
-      const rect = el.getBoundingClientRect()
-      const vh = window.innerHeight
-      const total = el.offsetHeight - vh
-      const prog = total <= 0 ? 0 : Math.min(1, Math.max(0, (-rect.top) / total))
+
+    let raf = 0
+    const clamp01 = (v) => Math.max(0, Math.min(1, v))
+
+    const measure = () => {
+      const start = el.offsetTop
+      const end = start + el.offsetHeight - window.innerHeight
+      const denom = Math.max(1, end - start)
+      const prog = clamp01((window.scrollY - start) / denom)
       setP(prog)
     }
-    onScroll()
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(measure)
+    }
+
+    measure()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    window.addEventListener('resize', measure)
+    window.addEventListener('orientationchange', measure)
+
     return () => {
+      cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('orientationchange', measure)
     }
   }, [])
 
-  const step1 = reduced || p > 0.12
-  const step2 = reduced || p > 0.32
-  const step3 = reduced || p > 0.54
-  const step4 = reduced || p > 0.74
+  const step1 = p > 0.12
+  const step2 = p > 0.32
+  const step3 = p > 0.54
+  const step4 = p > 0.74
 
   return (
     <section className={styles.intro}>
