@@ -43,33 +43,34 @@ export default function Playbook() {
           encryptedClassName={styles.centerText}
         />
       </header>
-
-      <div
-        className={styles.tabs}
-        role="tablist"
-        aria-label="Choose audience"
-        onKeyDown={onKeyTabs}
-      >
-        <button
-          role="tab"
-          aria-selected={tab === "ind"}
-          aria-controls="panel-ind"
-          id="tab-ind"
-          className={`${styles.tab} ${tab === "ind" ? styles.tabActive : ""}`}
-          onClick={() => setTab("ind")}
+      <div className={styles.tabsWrap}>
+        <div
+          className={styles.tabs}
+          role="tablist"
+          aria-label="Choose audience"
+          onKeyDown={onKeyTabs}
         >
-          For Individuals
-        </button>
-        <button
-          role="tab"
-          aria-selected={tab === "org"}
-          aria-controls="panel-org"
-          id="tab-org"
-          className={`${styles.tab} ${tab === "org" ? styles.tabActive : ""}`}
-          onClick={() => setTab("org")}
-        >
-          For Organisations
-        </button>
+          <button
+            role="tab"
+            aria-selected={tab === "ind"}
+            aria-controls="panel-ind"
+            id="tab-ind"
+            className={`${styles.tab} ${tab === "ind" ? styles.tabActive : ""}`}
+            onClick={() => setTab("ind")}
+          >
+            For Individuals
+          </button>
+          <button
+            role="tab"
+            aria-selected={tab === "org"}
+            aria-controls="panel-org"
+            id="tab-org"
+            className={`${styles.tab} ${tab === "org" ? styles.tabActive : ""}`}
+            onClick={() => setTab("org")}
+          >
+            For Organisations
+          </button>
+        </div>
       </div>
 
       <div

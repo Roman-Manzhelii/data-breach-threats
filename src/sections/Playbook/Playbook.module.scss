@@ -17,6 +17,12 @@
   opacity: .9;
 }
 
+.tabsWrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto $sp-24;
+}
+
 .tabs {
   border-radius: 9999px;
   background: $c-muted;
