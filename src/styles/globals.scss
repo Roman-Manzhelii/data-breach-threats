@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 
-html {
-  height: -webkit-fill-available;
-  min-height: 100%;
-  scroll-behavior: smooth;
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
@@ -18,15 +18,9 @@ body {
   font-size: $fs-body;
   line-height: $lh-normal;
   color: $c-text;
-  background: $c-bg;
+  background: $c-text;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-#root {
-  min-height: 100%;
 }
 
 h1,
@@ -89,6 +83,11 @@ button:focus-visible {
 
 main {
   padding-top: 72px;
+  background: $c-bg;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .snapSection {
