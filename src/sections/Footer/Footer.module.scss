@@ -5,6 +5,7 @@
     background: $c-text;
     color: $c-bg;
     padding: $sp-56 0 $sp-40;
+    padding-bottom: calc(#{$sp-40} + env(safe-area-inset-bottom));
     overflow: hidden;
 }
 
@@ -111,6 +112,7 @@
     .group {
         font-size: clamp(20px, 5vw, 22px);
     }
+
     .link {
         font-size: clamp(14px, 2vw, 16px);
     }
