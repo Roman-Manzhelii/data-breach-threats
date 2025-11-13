@@ -5,7 +5,8 @@
     margin: 0 auto;
     padding-left: clamp($sp-16, 5vw, $sp-56);
     padding-right: clamp($sp-16, 5vw, $sp-56);
-    padding-top: $sp-24;
+    padding-top: $sp-80;
+    padding-bottom: $sp-80;
 }
 
 .header {
