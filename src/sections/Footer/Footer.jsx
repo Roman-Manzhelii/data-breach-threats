@@ -66,7 +66,7 @@ export default function Footer() {
                         </div>
 
                         <div className={styles.stackBlock}>
-                            <h3 className={styles.group}>Design</h3>
+                            <h3 className={styles.group}>Design & Media</h3>
                             <ul className={styles.list}>
                                 {design.map(link => (
                                     <li key={link.href}>

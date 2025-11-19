@@ -4,6 +4,7 @@ import Stepper, { Step } from "../../components/Stepper/Stepper";
 import DecryptedText from "../../components/DecryptedText/DecryptedText";
 import { individuals } from "../../content/individuals";
 import { playbookOrg } from "../../content/playbook_org";
+import stepsImage from "../../assets/steps-to-manage-data-breach.jpg";
 
 export default function Playbook() {
   const IND = useMemo(() => individuals, []);
@@ -43,6 +44,12 @@ export default function Playbook() {
           encryptedClassName={styles.centerText}
         />
       </header>
+      <img
+        className={styles.img}
+        src={stepsImage}
+        alt="Steps to manage a data breach"
+        loading="lazy"
+      />
       <div className={styles.tabsWrap}>
         <div
           className={styles.tabs}

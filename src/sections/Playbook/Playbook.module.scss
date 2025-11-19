@@ -1,4 +1,4 @@
-@use '../../styles/tokens' as *;
+@use '../../styles/tokens'as *;
 
 .header {
   text-align: center;
@@ -15,6 +15,14 @@
   line-height: $lh-normal;
   color: $c-text;
   opacity: .9;
+}
+
+.img {
+  display: block;
+  margin: 0 auto $sp-24;
+  max-width: 920px;
+  width: 100%;
+  height: auto;
 }
 
 .tabsWrap {
@@ -91,6 +99,11 @@
 }
 
 @media (max-width: 420px) {
+  .img {
+    margin: 0 auto $sp-16;
+    max-width: 100%;
+  }
+
   .stepTitle {
     font-size: clamp(18px, 5vw, 20px);
     letter-spacing: 0;
